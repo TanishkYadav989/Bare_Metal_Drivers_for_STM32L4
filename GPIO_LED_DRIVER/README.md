@@ -1,5 +1,5 @@
 In this LED Driver, I have configured the GPIO Port C pin 0.
-Configured the Mode Register by clearing and setting bit-1 of Pin 0 for General Purpose Output Mode (00).
+Configured the Mode Register by clearing and setting bit-1 of Pin 0 for General Purpose Output Mode (01).
 Setting Output type as Push-Pull.
 Clearing the Pull up Pull down register for No pull up/No pull down (00).
 Clearing the Output Speed register for Low Speed Output (00).
