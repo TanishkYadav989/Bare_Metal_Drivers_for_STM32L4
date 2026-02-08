@@ -1,5 +1,5 @@
 In this External Interrupt Driver, I have used GPIO Port B pin 9 for a button input.
-So for the Button, I have confirgured the GPIO pin for Input Mode (01) with a pull up setting for the input by PUPD register.
+So for the Button, I have confirgured the GPIO pin for Input Mode (00) with a pull up setting for the input by PUPD register.
 Because I'm using pin 9 for input so for that i need to configure EXTI_9 as the same pin numbers are multiplexed to their same EXTI number.
 For Setting that EXTI, we first set the SYSCFG register 3 bit 4-7.
 To detect when the button is released, We disabled the Rising Trigger & enabled the Falling Trigger pin 9.
@@ -8,3 +8,5 @@ Finally we allot the priority of the Interrupt as 0x10 (8 bit as only upper four
 
 EXTI_9_5_IRQHandler handles the function that the Interrupt will perform.
 Inside this we look for the Pending Interrupt Flag in Pending Register 1 & Clears the Flag by setting PR1 pin 9 when its role is finished.
+
+Laslty in the main fuction, I call the the LED_ACTIVATE() from gpio.h, button_init() & exti_init() and perform the operation of toggling the led when the button is pressed.
