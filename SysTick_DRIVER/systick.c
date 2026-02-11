@@ -9,10 +9,11 @@ void systick_int(uint16_t ticks){
     SysTick->CTRL=7UL;                  //*Setting Control & Status Register (CLKSOURCE, TICK INT, ENABLE)*//
 }
 void SysTick_Handler(){                 //*SysTick Interrupt Handler*//
-	if(t>0)
+	if(t>0)                             //*Counts down according to the Delay provided*//
 		t--;                           
 }
 void delay(uint16_t time){
   t=time;
 	while(t!=0);
+
 }
