@@ -1,4 +1,4 @@
-#include "timerop.h"
+#include "timer.h"
 #include "stm32l476xx.h"
 void gpioinit(){
     RCC->AHB2ENR|=RCC_AHB2ENR_GPIOBEN;          //*Enabling Clock For GPIO Port B*//
@@ -20,3 +20,4 @@ void timer3init(uint16_t psc, uint16_t arr, uint16_t cnt){
     TIM3->CCER|=1UL<<8;                                 //*Capture/Compare_3 Output Enable*//
     TIM3->CR1|=1UL;                                     //*Enable Timer_3*//
 }
+
