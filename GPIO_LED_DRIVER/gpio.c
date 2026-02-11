@@ -12,5 +12,6 @@ void TOGGLE_LED(void){
 	GPIOC->ODR^=1UL;                      //*Toggling bit of PC0 Output*//
 }
 void ENABLE_LED(void){ 
-	GPIOA->ODR|=1UL;                     //*Setting bit of PC0 for Output*//
+	GPIOC->ODR|=1UL;                     //*Setting bit of PC0 for Output*//
+
 }
