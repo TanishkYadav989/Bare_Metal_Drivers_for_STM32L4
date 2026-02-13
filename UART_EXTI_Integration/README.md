@@ -5,4 +5,4 @@ Some newer functions are also initialised for Storing, Sending & Recieving of da
 2. UART_msg Function -> This function reads data provided into a globally defined array named usart_buffer. Sets the TXEIE bit in CR1 and initialises the counter to 0 for safe reading into the array. After this the usart_buffer reads data into TDR from array index 0.
 3. Send Function -> This function looks for the Transmission data register empty flag & assignes data to TDR which automatically clears the flag followed by incrementing of counter. If the buffer is empty it sets the counter to 0 again & disables the TXEIE bit.
 4. USART2_IRQHandler -> The is set for both sending & recieving data by looking for the RXNE & TXE flag in the Interrupt Status register. If any one of the those flag is set, it activates its respective function automatically. I also added a toggle led function along the Send protocol which results in the LED being turned off during transmission (Also used for kinda! debugging tool, to see if the Interrupt is properly activating or not).
-5. 
+ 
