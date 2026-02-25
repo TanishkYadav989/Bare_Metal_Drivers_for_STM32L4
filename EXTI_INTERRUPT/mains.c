@@ -10,6 +10,7 @@ int main(){
   exti_init();
   systick_int(4000);       //*Setting System Timer to 4000Hz*//
   while(1){
+    TOGGLE_LED();
     switch(counter){       //*LED Blinking delay will decrease after Each Button Click*//
       case 0:
         delay(1000); break;
@@ -23,4 +24,5 @@ int main(){
         delay(60); break;        
     }
   }
+
 }
