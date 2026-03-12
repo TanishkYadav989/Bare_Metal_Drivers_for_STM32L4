@@ -10,3 +10,5 @@ EXTI_9_5_IRQHandler handles the function that the Interrupt will perform.
 Inside this we look for the Pending Interrupt Flag in Pending Register 1 & Clears the Flag by setting PR1 pin 9 when its role is finished.
 
 Laslty in the main fuction, I call the the LED_ACTIVATE() from gpio.h, button_init() & exti_init() and perform the operation of toggling the led when the button is pressed.
+
+The Logic Analyzer capture is attached for the same which displays the raw electrical signals & activity of the pins.
