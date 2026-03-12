@@ -6,4 +6,6 @@ Further we set the priotity of the interrupt using SHPR which is set as lowest p
 And lastly, Enabling the System Timer by setting its first three bits i.e Clock Source, TICKINT & Enable bits.
 
 In the Interrupt Handler, we decrement the value of t which is defined globally until decrements to 0.
-And the delay function sets the precise time for the counter to generate a delay when t is not equal to 0.
+And the delay function sets the precise time for the counter to generate a delay until t is not equal to 0.
+
+The Logic Analyzer capture is attached for the same which displays the raw electrical signals & activity of the pins.
