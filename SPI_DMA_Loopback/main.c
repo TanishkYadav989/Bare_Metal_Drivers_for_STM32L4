@@ -15,7 +15,7 @@ int main(){
     CS_H();
     SDMA_WR(tx,rx,4);
     while(1){
-      sprint(str,"%X %X %X",tx[1],tx[2],tx[3]);
+      sprint(str,"%X %X %X",tx[0],tx[1],tx[2]);
       UART_msg(USART2,(uint8_t *)tx);
     }
 }
