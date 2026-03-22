@@ -17,6 +17,15 @@ GPIO pins Used :
  6.  Now we configure CFGR, enabled DMA & its circular mode for continuous reading, enabling & mapping Analog Watchdog 1 to CH_5 for 75% threshold detection. Mapping TIM4 for TRGO for CH_5. Setting hardware trigger on rising edge.
  7.  The upper (3068) & lower (0) threshold is assigned in TR1 which is linked to AWD1.
  8.  Setting the Sampling rate to 247.5 ADC clock cycles & allotting ADC1 CH_5 as the 1st sequence. AWD1's interrupt is also enabled to check its flag in ADC1's ISR.
- 9.  The DMA1 CH_1 is also configured in the same function by setting PSIZE & MSIZE to 8-bits, enabling circular mode, TCIE & TEIE. The address of the global buffer, the ADC1 regular channel data register & the size of the buffer are assigned to CMAR, CPAR & CNDTR respectively. CSELR's Ch1 is cleared as DMA1's mapping for ADC1 is represented by 0000. Lastly the DMA interrupt & the data stream is enabled before enabling ADC1.
- 10.   ADC1 is enable along with its interrupt & we wait until the ADC ready flag is set in the status register. When its ready we intitate the conversion by setting ADC start bit in CR.
- 11.   
+ 9.  The DMA1 CH_1 is also configured in the same function by setting PSIZE & MSIZE to 16-bits, enabling circular mode, TCIE & TEIE. The address of the global buffer, the ADC1 regular channel data register & the size of the buffer are assigned to CMAR, CPAR & CNDTR respectively. CSELR's Ch1 is cleared as DMA1's mapping for ADC1 is represented by 0000. Lastly the DMA interrupt & the data stream is enabled before enabling ADC1.
+ 10. ADC1 is enabled along with its interrupt & polled until the ADC ready flag is set in the status register. When its ready the conversion is initiated by setting ADC start bit in CR.
+ 11. In the ADC1_2 Interrupt handler, we check for the AWD1 flag in the ISR. If set, we use a conditional statement to check if the threshold is crossed, if crossed the LED is turned off & the buzzer alerts the user. If below the threshold the buzzer stays off.
+ 12. In the Transfer complete flag check of the DMA CH_1 handler, we check if the threshold isn't crossed yet, if yes then the knob can safely manipulate the duty cycle of the PWM LED. It also checks if threshold was crossed earlier & now the current ADC value is below threshold or button press event has occurred. If yes to both then the button is disarmed, buzzer is turned off & threshold is set to max to override safely & further increase the intensity of LED. Another conditional statement sets the threshold in TR1 back to 75% & re-arms the AWD.
+
+The EXTI button & PWM LED drivers share the same configuration methodology as their respective drivers this repository. Few changes were:
+1. Adding boolean in EXTI to register a button press event if the threshold is reached. 
+2. Changed the PWM mode from centre-aligned mode 3 to edge aligned mode for proper functioning.
+
+Design-Decisions taken : *I started with a basic potentiometer mapped to PWM, then I realised that a real infotainment system needs protection, so I implemented an Analog Watchdog to detect it rather than polling. Then a replicated the smartphone override input as a hard cutoff with no user control isn't a real product.*
+
+Terminal Capture & the Demonstration visual are attached
