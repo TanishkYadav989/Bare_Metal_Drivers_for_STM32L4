@@ -1,0 +1,3 @@
+In our smartphones or cars there is a volume system that manipulates the volume intensity when a button or a knob is pressed/rotated. The further we rotate the knob or longer we press the button the volume raises and if the volume reaches 75% a warning message pops up with a user input that overrides the capped intensity & allows to raise volume even further.
+
+This system combines two real-world behaviors - the position control of car infotainment volume knob & hearing protection warning in smartphones using Timer-Triggered ADC, Data transfer with DMA & PWM duty cycle manipulation for the LED. When the intensity reaches a threshold of 75%, it halts the further rise in the LED's intensity until the button is pressed to override the warning & continue its operations.
