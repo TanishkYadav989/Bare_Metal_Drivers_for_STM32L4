@@ -12,4 +12,4 @@ For Calculating the Prescaler, I have used the formula;
  For Calculating the Duty Cycle;
           Duty Cycle = CCR/ARR * 100
 
-The Logic Analyzer capture is attached for the same which displays the raw electrical signals & the decoded PWM signal with its Duty Cycle.
+The Logic Analyzer capture is attached for the same which displays the raw electrical signals & analyzed PWM signal with its Duty Cycle.
