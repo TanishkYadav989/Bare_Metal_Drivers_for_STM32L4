@@ -1,7 +1,6 @@
 #include "exti.h"
 #include "stm32l476xx.h"
-volatile int counter=0;
-volatile int button=0;                    
+volatile int counter=0;                 
 void button_init(){
     RCC->AHB2ENR|=RCC_AHB2ENR_GPIOBEN; //*GPIO Port B CLock Enable*//
     GPIOB->MODER&=~3UL<<18; //*Clearing bits of Pin 9, Input Mode*//
@@ -22,7 +21,6 @@ void exti_init(){
 void EXTI9_5_IRQHandler(){
     if((EXTI->PR1 & (1UL<<9))){
 	   counter++;                          
-	   button=1;
       if(counter>4)
       counter=0;   			
       EXTI->PR1|=1UL<<9;      //*Clearing Interrupt Flag by Setting it*//
