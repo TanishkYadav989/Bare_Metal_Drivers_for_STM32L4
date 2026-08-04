@@ -8,7 +8,7 @@ int main(){
   LED_ACTIVATE();
   button_init();
   exti_init();
-  systick_int(4000);       //*Setting System Timer to 4000Hz*//
+  systick_init(4000);       //*Setting System Timer to 4000Hz*//
   while(1){
     TOGGLE_LED();
     switch(counter){       //*LED Blinking delay will decrease after Each Button Click*//
